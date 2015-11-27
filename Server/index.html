@@ -1,0 +1,40 @@
+<!--HTML page that loads soundclod songs into the database. Can be used to stream songs,  -->
+
+<script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<p id="test">SoundCloud server. Click the button below to update your favorites list. Currently, removing songs is not supported.</p>
+<script>
+// initialize client with app credentials
+SC.initialize({
+  client_id: '<your client ID>',
+  redirect_uri: '<your callback URL>'
+});
+
+// initiate auth popup
+SC.connect(function() {
+  SC.get('/me', function(me) {
+    alert('Hello, ' + me.username);
+  });
+});
+
+
+function streamSongs() {
+SC.get('/me/favorites', function(favorites) {
+		//SC.stream("/tracks/"+favorites[0].id, function(sound){
+		//sound.play();
+		var str_json = JSON.stringify(favorites);
+		  $.ajax({
+			type: 'POST',
+			url: 'database_script.php',
+			data: {'songs': str_json},
+			success: function(msg) {
+			  alert('Songs added to database!');
+			      }
+  });
+//});
+});
+
+}
+
+</script>
+<input type="button" href="#" id="stream" class="big button" value="Update" onclick="streamSongs();" />
