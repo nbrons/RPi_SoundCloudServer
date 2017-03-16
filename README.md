@@ -15,7 +15,7 @@ A Soundcloud Server that can stream your SoundCloud Library from your Raspberry 
 <ul><li> python, gstreamer, soundcloud, mysql </li>
     <li> you might need to run the command "pip install requests[security]"</li>
 	<li> you may also need to run the command "pip install soundcloud"</li></ul></li>
-<li> Update all occurences of <host>, <user>, <pass>, <your client id>, <your callback URL>, and <clientid> to reflect the appropriate information </li>
+<li> Update all occurences of host, user, pass, your client id, your callback URL, and clientid to reflect the appropriate information </li>
 <li> Run the Python script on the Pi and enjoy </li>
 </ol>
 
